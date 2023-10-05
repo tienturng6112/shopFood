@@ -1,0 +1,153 @@
+<style>
+    /* CSS */
+   .product-card {
+        /* ... your card styles ... */
+        position: relative;
+    }
+
+    .order-button {
+        background-color: #6c7ee1;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .order-button:hover {
+        background-color: #5769c8;
+    }
+
+    .popup {
+        display: none;
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    }
+    .popup h2{
+        text-align: left;
+        padding-bottom: 10px;
+        border-bottom: 1px solid;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+    }
+</style>
+<h2 class="mt-5">Tất cả sản phẩm</h2>
+<div class="row mt-5">
+            {{#each product}}
+        <div class="card mr-3 ml-4" style="width: 15rem;">
+            <a href="/sanpham/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="...">
+            </a>
+            <div class="card-body">
+                    <a style="text-decoration: none;color:#6c7ee1;"  href="/sanpham/{{this.slug}}">
+                        <h5 class="card-title text-center">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.des}}</p>
+                    <p class="card-text text-danger fs-5 fw-bold text-right">{{this.list}}</p>
+                    <button href="#" style="background-color: #6c7ee1;color:#fff" class="btn btn-hover w-100 order-button">Đặt hàng ngay</button>
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+                            <h2>Thông báo</h2>
+                            <div style="display: flex;align-items: center;margin-top:30px">
+                                <i class="fa-solid fa-circle-check" style="color: #0aff3b;font-size:30px; margin-right:10px;"></i>
+                                <h4 style="color: green;margin-top:10px">Đả thêm vào giỏ hàng !!!</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+<div class="row mt-5">
+            {{#each product}}
+        <div class="card mr-3 ml-4" style="width: 15rem;">
+            <a href="/sanpham/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="...">
+            </a>
+            <div class="card-body">
+                    <a style="text-decoration: none;color:#6c7ee1;"  href="/sanpham/{{this.slug}}">
+                        <h5 class="card-title text-center">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.des}}</p>
+                    <p class="card-text text-danger fs-5 fw-bold text-right">{{this.list}}</p>
+                    <button href="#" style="background-color: #6c7ee1;color:#fff" class="btn btn-hover w-100 order-button">Đặt hàng ngay</button>
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+                            <h2>Thông báo</h2>
+                            <div style="display: flex;align-items: center;margin-top:30px">
+                                <i class="fa-solid fa-circle-check" style="color: #0aff3b;font-size:30px; margin-right:10px;"></i>
+                                <h4 style="color: green;margin-top:10px">Đả thêm vào giỏ hàng !!!</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+<div class="row mt-5">
+            {{#each product}}
+        <div class="card mr-3 ml-4" style="width: 15rem;">
+            <a href="/sanpham/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="...">
+            </a>
+            <div class="card-body">
+                    <a style="text-decoration: none;color:#6c7ee1;"  href="/sanpham/{{this.slug}}">
+                        <h5 class="card-title text-center">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.des}}</p>
+                    <p class="card-text text-danger fs-5 fw-bold text-right">{{this.list}}</p>
+                    <button href="#" style="background-color: #6c7ee1;color:#fff" class="btn btn-hover w-100 order-button">Đặt hàng ngay</button>
+                    <div id="popup" class="popup">
+                        <div class="popup-content">
+                            <h2>Thông báo</h2>
+                            <div style="display: flex;align-items: center;margin-top:30px">
+                                <i class="fa-solid fa-circle-check" style="color: #0aff3b;font-size:30px; margin-right:10px;"></i>
+                                <h4 style="color: green;margin-top:10px">Đả thêm vào giỏ hàng !!!</h4>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div class="overlay"></div>
+
+
+
+<script>
+    const orderButtons = document.querySelectorAll(".order-button");
+    const popups = document.querySelectorAll(".popup");
+    const overlay = document.querySelector(".overlay");
+
+    orderButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            popups[index].style.display = "block";
+            overlay.style.display = "block";
+        });
+    });
+
+    overlay.addEventListener("click", () => {
+        popups.forEach(popup => {
+            popup.style.display = "none";
+        });
+        overlay.style.display = "none";
+    });
+</script>

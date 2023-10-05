@@ -1,0 +1,68 @@
+<div class="mt-4">
+    <table class="table mt-4">
+        <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col">Chỉnh sửa</th>
+                </tr>
+        </thead>
+        <tbody>
+            {{#each product}}
+                <tr>
+                    <th scope="row">{{ sum @index 1}}</th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.list}}</td>
+                    <td>{{this.createdAt}}</td>
+                    <td>
+                        <a href="{{this._id}}/edit" class="btn btn-success">Sửa</a>
+                        <a href="" class="btn btn-danger" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#deleteModel">Xóa</a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+</table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Thông báo!!!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa không?
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-sanpham" type="button" class="btn btn-danger">Đồng ý</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- form ẩn --}}
+ <form name="delete-form" method="POST"></form>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    var productid;
+    var btnDelete = document.querySelector('#btn-delete-sanpham');
+    var deleteform = document.forms["delete-form"];
+
+    $('#deleteModel').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget);
+        productid = button.data('id'); 
+    });
+
+    // hành động click chuyển hướng qua delete trong conurseControllern
+    btnDelete.onclick = function(e){
+        deleteform.action = "/me/" + productid + "?_method=DELETE";
+        deleteform.submit();
+    }
+});
+</script>

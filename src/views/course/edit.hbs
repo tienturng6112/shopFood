@@ -1,0 +1,22 @@
+<div class="mt-4">
+    <h3>Cập nhập sản phẩm</h3>
+    <form class="mt-4" method="POST" action="/me/{{Product._id}}?_method=PUT">
+        <div class="mb-3">
+            <label for="name" class="form-label">Thêm tên</label>
+            <input type="text" value="{{Product.name}}" class="form-control" id="name" name="name">
+        </div>
+         <div class="mb-3">
+            <label for="des" class="form-label">Thêm nội dung</label>
+            <textarea class="form-control" id="des" name="des">{{Product.des}}</textarea>
+        </div>
+         <div class="mb-3">
+            <label for="image" class="form-label">Thêm hình</label>
+            <input type="text" value="{{Product.image}}" class="form-control" id="image" name="image">
+        </div>
+         <div class="mb-3">y
+            <label for="list" class="form-label">thêm danh mục</label>
+            <input type="text" value="{{Product.list}}" class="form-control" id="list" name="list">
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+</div>

@@ -1,0 +1,88 @@
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .product {
+    display: flex;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .product-image {
+    flex: 1;
+    padding: 20px;
+  }
+  .product-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .product-details {
+    flex: 2;
+    padding: 20px;
+  }
+  .product-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .product-description {
+    margin-bottom: 20px;
+  }
+  .product-price {
+    font-size: 50px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 10px;
+  }
+  .product-button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 110px;
+    margin-left: 0;
+  }
+  .product-button:hover {
+    background-color: #c0392b;
+  }
+  .product-status span{
+    color: #fff;
+    padding: 6px 12px;
+    background-color: rgb(81, 124, 35);
+  }
+</style>
+
+
+ <div class="container">
+    <div class="product">
+      <div class="product-image">
+        <img src="{{product.image}}" alt="Product Image">
+      </div>
+      <div class="product-details">
+        <h1 class="product-title">{{product.name}}</h1>
+        <div class="mb-3" style="">
+        <i class="fa-solid fa-star" style="color: #eeff00;"></i>
+        <i class="fa-solid fa-star" style="color: #eeff00;"></i>
+        <i class="fa-solid fa-star" style="color: #eeff00;"></i>
+        <i class="fa-solid fa-star" style="color: #eeff00;"></i>
+        <i class="fa-solid fa-star" style="color: #eeff00;"></i>
+        <span> Có 99k đánh giá 5 sao</span>
+        </div>
+        <p class="product-status">Trạng thái: <span>Còn hàng</span></p>
+        <p class="product-price">{{product.list}}</p>
+        <p class="product-description">{{product.des}}</p>
+        <button class="product-button">Thêm vào giỏ hàng</button>
+      </div>
+    </div>
+  </div>
